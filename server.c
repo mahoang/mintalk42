@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/07/16 14:01:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/17 14:03:50 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,28 @@ faire signal sighandler_t signal(int signum, sighandler_t handler) pour lui donn
 
 */
 
-struct sigse_s
+void	handler(int signal) /*todo transform msg into bits for converting into char*/
 {
+	/*write(1, "Hello", 5);*/
+	static int count = 30;
+	if (signal == SIGUSR1)
+	{
+		count++;
+		write(1, "1", 1);
 
-};
+	}
+	if (signal == SIGUSR2)
+	{
+		count = 0;
+	}
+	write(1, &count, 1);
 
-void	handler(int signal)
-{
-	write(1, "Hello", 5);
 }
 int main()
 {
 	int i = getpid();
-	// write(1, "PID :",6 );
+	int count;
+
 	printf("PID %i\n", i);
 	sigset_t	ens1;
 	sigemptyset(&ens1);
@@ -45,8 +54,9 @@ int main()
 	act.sa_mask = ens1;
 	act.sa_handler = handler;
 	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
+
 	while(1)
 	{
-
 	}
 }

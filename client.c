@@ -3,22 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/07/16 11:19:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/17 14:47:24 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+/*
+int	asctobin(int asc)
+{
+	int i;
+	int left;
+	int res;
 
-int main()
+	i = 1;
+	res = 0;
+	while (asc > 0)
+	{
+		left = asc % 2;
+		res += (left * i);
+		asc = asc / 2;
+		i = i *10;
+	}
+	return (res);
+}
+*/
+
+int	ascsize(char *msg)
 {
 	int i;
 
-	i = getpid();
+	i = 0;
+	
+}
+int main(int ac, char *av[])
+{
+	int pid;
+/*
+	if (ac != 3)
+	{
+		printf("use with = %s <server pid> <txt to send>", av[0]);
+		return (0);
+	}
+	pid = ft_atoi(av[1]);*/
 
-	printf("%i", i);
 }
 /*
 recuperer le message a envoyer
