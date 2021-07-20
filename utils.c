@@ -6,12 +6,12 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:29:06 by mahoang           #+#    #+#             */
-/*   Updated: 2021/07/16 15:41:43 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/21 00:52:02 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
+/*
 int	ft_atoi(const char *str)
 {
 	long int	c;
@@ -39,3 +39,4 @@ int	ft_atoi(const char *str)
 		nb = nb * -1;
 	return (nb);
 }
+*/
