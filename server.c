@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 00:36:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/21 15:34:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	receive(int signal)
 int main()
 {
 	int i = getpid();
-	int count;
 
 	g_data.c = 0;
 	g_data.size = 0;

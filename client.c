@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 00:51:53 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/21 15:39:39 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		nb = nb * -1;
 	return (nb);
 }
-
+/*
 int	asctobin(int asc)
 {
 	int i;
@@ -58,7 +58,7 @@ int	asctobin(int asc)
 	}
 	return (res);
 }
-
+*/
 int	send_msg(int pid, char msg)
 {
 	int i;
@@ -68,6 +68,7 @@ int	send_msg(int pid, char msg)
 	while (i < 8)
 	{
 		bit = (msg >> i) & 1;
+		//printf("%i bit \n", bit);
 		if (bit)
 			kill(pid, SIGUSR2);
 		else
@@ -76,14 +77,6 @@ int	send_msg(int pid, char msg)
 		i++;
 	}
 	return (1);
-}
-
-int	ascsize(char *msg)
-{
-	int i;
-
-	i = 0;
-
 }
 
 int main(int ac, char *av[])
@@ -102,7 +95,44 @@ int main(int ac, char *av[])
 	int j;
 
 	j = asctobin(i);
-	printf("%i", j);*/
+	printf("%i", j);
+	char j = 't';
+	int k0;
+	int k1;
+	int k2;
+	int k3;
+	int k4;
+	int k5;
+	int k6;
+	int k7;
+	k0 = j >> 0 & 1;
+	k1 = j >> 1 & 1;
+	k2 = j >> 2 & 1;
+	k3 = j >> 3 & 1;
+	k4 = j >> 4 & 1;
+	k5 = j >> 5 & 1;
+	k6 = j >> 6 & 1;
+	k7 = j >> 7 & 1;
+	printf("k0 %i\nk1 %i \nk2 %i \nk3 %i \nk4 %i\nk5 %i \nk6 %i \nk7 %i \n", k0, k1, k2, k3, k4, k5, k6, k7);
+
+	int k00;
+	int k11;
+	int k22;
+	int k33;
+	int k44;
+	int k55;
+	int k66;
+	int k77;
+	k00 = j << 0 / 1;
+	k11 = j << 1 / 1;
+	k22 = j << 2 / 1;
+	k33 = j << 3 / 1;
+	k44 = j << 4 / 1;
+	k55 = j << 5 / 1;
+	k66 = j << 6 / 1;
+	k77 = j << 7 / 1;
+	printf("k00 %i\nk11 %i \nk22 %i \nk33 %i \nk44 %i\nk55 %i \nk66 %i \nk77 %i \n", k00, k11, k22, k33, k44, k55, k66, k77);
+	*/
 	while (av[2][i])
 	{
 		send_msg(pid, av[2][i]);
