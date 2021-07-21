@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 15:39:39 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:35:35 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,20 @@ int	ft_atoi(const char *str)
 		nb = nb * -1;
 	return (nb);
 }
-/*
-int	asctobin(int asc)
+
+void	ft_putstr(char *c)
 {
 	int i;
-	int left;
-	int res;
 
-	i = 1;
-	res = 0;
-	while (asc > 0)
-	{
-		left = asc % 2;
-		res += (left * i);
-		asc = asc / 2;
-		i = i *10;
-	}
-	return (res);
+	i = 0;
+	if (c)
+		while (c[i] != '\0')
+		{
+			write (1, &c[i], 1);
+			i++;
+		}
 }
-*/
+
 int	send_msg(int pid, char msg)
 {
 	int i;
@@ -70,9 +65,9 @@ int	send_msg(int pid, char msg)
 		bit = (msg >> i) & 1;
 		//printf("%i bit \n", bit);
 		if (bit)
-			kill(pid, SIGUSR2);
-		else
 			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
 		usleep(150);
 		i++;
 	}
@@ -138,6 +133,9 @@ int main(int ac, char *av[])
 		send_msg(pid, av[2][i]);
 		i++;
 	}
+	//printf("%i",av[2][i]);
+	if (av[2][i] == '\0')
+		ft_putstr("message sent");
 	return (0);
 }
 

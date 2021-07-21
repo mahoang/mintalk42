@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 15:34:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:56:23 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	handler(int signal) /*todo transform msg into bits for converting into char
 
 void	receive(int signal)
 {
-	if (signal == SIGUSR2)
+	if (signal == SIGUSR1)
 		g_data.c |= 1 << g_data.size;
 	g_data.size++;
 	if (g_data.size == 8)
@@ -75,12 +75,15 @@ int main()
 	sigemptyset(&ens1);
 	sigaddset(&ens1, SIGUSR1);
 	sigaddset(&ens1, SIGUSR2);
-	struct sigaction act;
+	/*struct sigaction act;
 	act.sa_mask = ens1;
 	act.sa_handler = receive;
+
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-
+	*/
+	signal(SIGUSR1, receive);
+	signal(SIGUSR2, receive);
 	while(1)
 	{
 	}
