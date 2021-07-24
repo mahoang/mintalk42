@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:00:45 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 00:28:21 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/24 11:13:15 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
-#define MINITALK_H
+# define MINITALK_H
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdio.h>
-
+# include <sys/types.h>
+# include <unistd.h>
+# include <signal.h>
+# include <stdio.h>
 
 typedef struct s_msg
 {
-	char c;
+	char	c;
 	size_t	size;
 }			t_msg;
 
