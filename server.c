@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/07/24 12:08:05 by mahoang          ###   ########.fr       */
+/*   Updated: 2021/07/24 14:35:24 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main(void)
 	g_data.c = 0;
 	g_data.size = 0;
 	ft_putnbr(i);
+	ft_putchar('\n');
 	signal(SIGUSR1, receive);
 	signal(SIGUSR2, receive);
 	while (1)
