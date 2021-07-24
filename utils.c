@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:29:06 by mahoang           #+#    #+#             */
-/*   Updated: 2021/07/24 11:05:00 by mahoang          ###   ########.fr       */
+/*   Updated: 2021/07/24 11:19:29 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 
 	/*
 	**for sigaction | clang
+	sigset_t	ens1;
+	sigemptyset(&ens1);
+	sigaddset(&ens1, SIGUSR1);
+	sigaddset(&ens1, SIGUSR2);
 	struct sigaction act;
 	act.sa_mask = ens1;
 	act.sa_handler = receive;

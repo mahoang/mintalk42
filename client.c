@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/07/24 11:06:34 by mahoang          ###   ########.fr       */
+/*   Updated: 2021/07/24 11:49:40 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	send_msg(int pid, char msg)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(150);
+		usleep(200);
 		i++;
 	}
 	return (1);
@@ -82,7 +82,7 @@ int	main(int ac, char *av[])
 	i = 0;
 	if (ac != 3)
 	{
-		printf("use with = %s <server pid> <txt to send>", av[0]);
+		ft_putstr("use with : <./client> <server pid> <txt to send>");
 		return (0);
 	}
 	pid = ft_atoi(av[1]);
