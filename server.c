@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/07/24 14:35:24 by mahoang          ###   ########.fr       */
+/*   Updated: 2021/07/27 21:36:38 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_putnbr(long nb)
 void	receive(int signal)
 {
 	if (signal == SIGUSR1)
-		g_data.c |= 1 << g_data.size;
+		g_data.c = g_data.c | 1 << g_data.size;
 	g_data.size++;
 	if (g_data.size == 8)
 	{
