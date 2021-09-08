@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/09/08 13:19:49 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 13:23:00 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	putstr(char c)
 {
-	write(1, &c, 1);
+	if (c)
+		write(1, &c, 1);
 }
 
 void	receive(int signal)
 {
 	if (signal == SIGUSR1)
-		g_data.c |= 1 << g_data.size;
+		g_data.c = g_data.c | 1 << g_data.size;
 	g_data.size++;
 	if (g_data.size == 8)
 	{
 		g_data.size = 0;
-		if (!g_data.c)
-			putstr('\n');
+		if (g_data.c)
+			ft_putchar(g_data.c);
 		else
-			putstr(g_data.c);
+			ft_putchar('\n');
 		g_data.c = 0;
 	}
 }
@@ -57,4 +58,5 @@ int	main(void)
 	while (1)
 	{
 	}
+	return (0);
 }

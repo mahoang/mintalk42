@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/09/04 16:56:30 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 13:25:28 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	send_msg(int pid, char msg)
 	while (i < 8)
 	{
 		bit = (msg >> i) & 1;
-		//printf("%i bit \n", bit);
 		if (bit)
 			kill(pid, SIGUSR1);
 		else
@@ -83,15 +82,15 @@ int	send_msg(int pid, char msg)
 **sachant que la reception d'un signal interrompt toute action
 **temporiser les signaux a l'aide de sleep/usleep
 */
-
 int	main(int ac, char *av[])
 {
 	int	pid;
 	int	i;
 
+	i = 0;
 	if (ac != 3)
 	{
-		printf("use with = %s <server pid> <txt to send>", av[0]);
+		ft_putstr("use with : <./client> <server pid> <txt to send>");
 		return (0);
 	}
 	pid = ft_atoi(av[1]);
@@ -101,7 +100,6 @@ int	main(int ac, char *av[])
 		send_msg(pid, av[2][i]);
 		i++;
 	}
-	//printf("%i",av[2][i]);
 	if (av[2][i] == '\0')
 		ft_putstr("message sent");
 	return (0);
