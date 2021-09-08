@@ -6,13 +6,13 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/09/08 13:27:43 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 13:47:59 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	putstr(char c)
+void	ft_putchar(char c)
 {
 	if (c)
 		write(1, &c, 1);
