@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:30 by user42            #+#    #+#             */
-/*   Updated: 2021/09/08 13:47:59 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:49:29 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	receive(int signal)
 
 int	main(void)
 {
-	int			i;
-	sigset_t	ens1;
+	int					i;
+	sigset_t			ens1;
+	struct sigaction	act;
 
 	i = getpid();
 	g_data.c = 0;
@@ -46,15 +47,11 @@ int	main(void)
 	sigemptyset(&ens1);
 	sigaddset(&ens1, SIGUSR1);
 	sigaddset(&ens1, SIGUSR2);
-	/*struct sigaction act;
+	act.sa_flags = 0;
 	act.sa_mask = ens1;
 	act.sa_handler = receive;
-
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	*/
-	signal(SIGUSR1, receive);
-	signal(SIGUSR2, receive);
 	while (1)
 	{
 	}
