@@ -6,12 +6,11 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/07/21 16:35:35 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/04 16:56:30 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 int	ft_atoi(const char *str)
 {
@@ -22,8 +21,8 @@ int	ft_atoi(const char *str)
 	c = 0;
 	d = 0;
 	nb = 0;
-	while (str[c] == '\t' || str[c] == '\n' || str[c] == '\v' ||
-	str[c] == '\f' || str[c] == '\r' || str[c] == ' ')
+	while (str[c] == '\t' || str[c] == '\n' || str[c] == '\v'
+		|| str[c] == '\f' || str[c] == '\r' || str[c] == ' ')
 		c++;
 	if (str[c] == '-' || str[c] == '+')
 	{
@@ -43,21 +42,23 @@ int	ft_atoi(const char *str)
 
 void	ft_putstr(char *c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (c)
+	{
 		while (c[i] != '\0')
 		{
 			write (1, &c[i], 1);
 			i++;
 		}
+	}
 }
 
 int	send_msg(int pid, char msg)
 {
-	int i;
-	int bit;
+	int	i;
+	int	bit;
 
 	i = 0;
 	while (i < 8)
@@ -74,9 +75,19 @@ int	send_msg(int pid, char msg)
 	return (1);
 }
 
-int main(int ac, char *av[])
+/*
+**recuperer le message a envoyer
+**le convertir en binaire
+**send avec kill chaque chara
+**sigusr1 sera 1 et sigusr2 sera 0 (ou l'inverse)
+**sachant que la reception d'un signal interrompt toute action
+**temporiser les signaux a l'aide de sleep/usleep
+*/
+
+int	main(int ac, char *av[])
 {
-	int pid;
+	int	pid;
+	int	i;
 
 	if (ac != 3)
 	{
@@ -84,50 +95,7 @@ int main(int ac, char *av[])
 		return (0);
 	}
 	pid = ft_atoi(av[1]);
-
-	int i = 0;
-	/*
-	int j;
-
-	j = asctobin(i);
-	printf("%i", j);
-	char j = 't';
-	int k0;
-	int k1;
-	int k2;
-	int k3;
-	int k4;
-	int k5;
-	int k6;
-	int k7;
-	k0 = j >> 0 & 1;
-	k1 = j >> 1 & 1;
-	k2 = j >> 2 & 1;
-	k3 = j >> 3 & 1;
-	k4 = j >> 4 & 1;
-	k5 = j >> 5 & 1;
-	k6 = j >> 6 & 1;
-	k7 = j >> 7 & 1;
-	printf("k0 %i\nk1 %i \nk2 %i \nk3 %i \nk4 %i\nk5 %i \nk6 %i \nk7 %i \n", k0, k1, k2, k3, k4, k5, k6, k7);
-
-	int k00;
-	int k11;
-	int k22;
-	int k33;
-	int k44;
-	int k55;
-	int k66;
-	int k77;
-	k00 = j << 0 / 1;
-	k11 = j << 1 / 1;
-	k22 = j << 2 / 1;
-	k33 = j << 3 / 1;
-	k44 = j << 4 / 1;
-	k55 = j << 5 / 1;
-	k66 = j << 6 / 1;
-	k77 = j << 7 / 1;
-	printf("k00 %i\nk11 %i \nk22 %i \nk33 %i \nk44 %i\nk55 %i \nk66 %i \nk77 %i \n", k00, k11, k22, k33, k44, k55, k66, k77);
-	*/
+	i = 0;
 	while (av[2][i])
 	{
 		send_msg(pid, av[2][i]);
@@ -138,14 +106,3 @@ int main(int ac, char *av[])
 		ft_putstr("message sent");
 	return (0);
 }
-
-
-/*
-recuperer le message a envoyer
-le convertir en binaire
-envoyer avec kill chaque character sachant que sigusr1 sera 1 et sigusr2 sera 0 (ou l'inverse)
-sachant que la reception d'un signal interrompt toute action, du coup ce qui se passe c'est qu'il faut temporiser les signaux a l'aide de sleep/usleep (plutot usleep testons[100] d'abord)
-
-
-
-*/
