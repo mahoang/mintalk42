@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 16:03:35 by user42            #+#    #+#             */
-/*   Updated: 2021/09/08 13:25:28 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:51:48 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	send_msg(int pid, char msg)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(150);
+		usleep(200);
 		i++;
 	}
 	return (1);

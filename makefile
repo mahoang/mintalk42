@@ -6,7 +6,7 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/17 11:58:57 by zephyrus          #+#    #+#              #
-#    Updated: 2021/09/08 13:24:12 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/09/21 11:25:50 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = server.c client.c
 HEADER = minitalk.h
 FLAGS = -Wall -Wextra -Werror
 NAME = SERVER CLIENT
-RM = rm -f
+SNAME = server
+CNAME = client
 OBJ = $(SRC:.c=.o)
 CC = clang
 
@@ -26,11 +27,13 @@ $(NAME) : $(SERVER) $(CLIENT)
 			$(CC) $(FLAGS) -o server $(SERVER)
 			$(CC) $(FLAGS) -o client $(CLIENT)
 
-clean : $(RM) $(OBJ)
+clean :
+	@rm -rf $(OBJ)
+
 
 fclean : clean
-		$(RM) $(SNAME)
-		$(RM) $(CNAME)
+	@rm -rf $(SNAME)
+	@rm -rf $(CNAME)
 
 re : fclean all
 
